@@ -12,6 +12,22 @@
     </div>
 
     <main v-else class="dash-grid">
+      <!-- 十堰市地图入口 -->
+      <GlowPanel title="十堰市专题" hint="查看十堰市企业与专利分布地图" class="span-12">
+        <div class="shiyan-entry">
+          <div class="entry-content">
+            <div class="entry-icon">🗺️</div>
+            <div class="entry-text">
+              <div class="entry-title">十堰市企业与专利分布地图</div>
+              <div class="entry-desc">查看十堰市各区县企业分布和专利数据可视化</div>
+            </div>
+          </div>
+          <button class="entry-btn" @click="$router.push('/shiyan')">
+            查看地图 →
+          </button>
+        </div>
+      </GlowPanel>
+
       <!-- Section 1: KPI -->
       <GlowPanel title="家底总览" :hint="`${filter.currentCityName}小巨人企业专利核心指标`" class="span-12">
         <div class="kpi-grid" v-if="overview?.kpis">
@@ -317,6 +333,62 @@ function exportListExcel() {
 }
 
 .loading { color: $text-muted; padding: 24px; text-align: center; }
+
+.shiyan-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 8px;
+  gap: 24px;
+}
+
+.entry-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.entry-icon {
+  font-size: 36px;
+  filter: drop-shadow(0 0 8px rgba(247, 200, 115, 0.6));
+}
+
+.entry-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entry-title {
+  font-size: 16px;
+  color: $gold;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.entry-desc {
+  font-size: 12px;
+  color: $text-secondary;
+  letter-spacing: 0.5px;
+}
+
+.entry-btn {
+  padding: 10px 24px;
+  background: linear-gradient(180deg, rgba(247, 200, 115, 0.2) 0%, rgba(247, 200, 115, 0.05) 100%);
+  border: 1px solid $gold;
+  color: $gold;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 2px;
+  font-family: inherit;
+  transition: all 0.2s;
+  &:hover {
+    background: rgba(247, 200, 115, 0.3);
+    box-shadow: 0 0 12px rgba(247, 200, 115, 0.5);
+  }
+}
 
 .empty-state {
   flex: 1;

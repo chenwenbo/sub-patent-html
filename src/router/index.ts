@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-rou
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/dashboard' },
   { path: '/dashboard', component: () => import('@/views/Dashboard/index.vue'), meta: { title: '专利分析驾驶舱' } },
+  { path: '/shiyan', component: () => import('@/views/Shiyan/index.vue'), meta: { title: '十堰市地图' } },
   { path: '/companies', component: () => import('@/views/Companies/List.vue'), meta: { title: '企业名单' } },
   { path: '/companies/:id', component: () => import('@/views/Companies/Detail.vue'), meta: { title: '企业详情' } },
   { path: '/admin/import', component: () => import('@/views/Admin/Import.vue'), meta: { title: '数据导入' } },
