@@ -1,0 +1,90 @@
+// ============================================================
+// 深蓝政务风设计令牌 — 对齐省级指挥中心大屏审美
+// ============================================================
+
+// 背景色 — 多层渐变叠加营造空间纵深
+$bg-primary:    #0a1733;      // 主背景（深邃藏蓝）
+$bg-secondary:  #0e2147;      // 卡片底
+$bg-tertiary:   #0c1a3a;      // 嵌套卡片
+$bg-accent:     #061025;      // 最暗（标题栏背景）
+$bg-gradient:   radial-gradient(ellipse at top, #142a5c 0%, #0a1733 45%, #061025 100%);
+
+// 主色 / 高亮
+$gov-blue:      #2470d7;      // 政务主蓝
+$cyan-accent:   #00e5ff;      // 青色（次要高亮，图表辅助色）
+$gold:          #f7c873;      // 金色（KPI 数字、装饰）
+$gold-deep:     #d4a04a;      // 金色深色（标题下划线）
+$red-warn:      #ff5b5b;      // 短板/告警
+$green-ok:      #4ade80;      // 正向
+$purple:        #b39dff;      // 第三辅助色
+
+// 边框 / 阴影
+$border-glow:        rgba(36, 112, 215, 0.55);
+$border-glow-strong: rgba(36, 112, 215, 0.85);
+$shadow-inner:       0 0 24px rgba(36, 112, 215, 0.4) inset;
+$shadow-outer:       0 4px 32px rgba(0, 0, 0, 0.6);
+
+// 文字
+$text-primary:  #eaf2ff;
+$text-secondary:#a7c0e8;
+$text-muted:    #6a87b5;
+$text-gold:     #f7c873;
+$text-cyan:     #00e5ff;
+
+// 字体
+$font-display:  'DingTalk JinBuTi', 'YouSheBiaoTiHei', 'Source Han Sans CN', sans-serif;  // KPI 大数字
+$font-body:     'PingFang SC', 'Source Han Sans CN', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+$font-mono:     'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+// 间距
+$gap-xs: 4px;
+$gap-sm: 8px;
+$gap-md: 16px;
+$gap-lg: 24px;
+$gap-xl: 32px;
+
+// 大屏装饰 mixin
+@mixin glow-border {
+  position: relative;
+  border: 1px solid $border-glow;
+  background: linear-gradient(180deg, rgba(14, 33, 71, 0.85) 0%, rgba(10, 23, 51, 0.7) 100%);
+  box-shadow: $shadow-inner, $shadow-outer;
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid $cyan-accent;
+  }
+  &::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  &::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+}
+
+@mixin section-title {
+  display: flex;
+  align-items: center;
+  font-family: $font-display;
+  font-size: 18px;
+  color: $text-primary;
+  letter-spacing: 2px;
+  margin-bottom: $gap-md;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: linear-gradient(180deg, $gold 0%, $gold-deep 100%);
+    margin-right: $gap-sm;
+    box-shadow: 0 0 8px $gold;
+  }
+}
+
+@mixin kpi-number {
+  font-family: $font-display;
+  font-weight: 700;
+  background: linear-gradient(180deg, #fff 0%, $gold 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 16px rgba(247, 200, 115, 0.5);
+}

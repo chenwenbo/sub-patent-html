@@ -1,0 +1,53 @@
+@use './tokens.scss' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #app {
+  height: 100%;
+  font-family: $font-body;
+  background: $bg-primary;
+  color: $text-primary;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+::-webkit-scrollbar-thumb { background: $border-glow; border-radius: 3px; }
+
+a { color: $cyan-accent; text-decoration: none; }
+button { font-family: inherit; }
+
+// 全局通用工具类
+.flex-row { display: flex; flex-direction: row; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-1   { flex: 1; }
+.gap-sm   { gap: $gap-sm; }
+.gap-md   { gap: $gap-md; }
+.gap-lg   { gap: $gap-lg; }
+
+.kpi-number { @include kpi-number; }
+.section-title { @include section-title; }
+.glow-border { @include glow-border; }
+
+// 全屏背景装饰
+.screen-bg {
+  background: $bg-gradient;
+  background-attachment: fixed;
+  position: relative;
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(36, 112, 215, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(36, 112, 215, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
